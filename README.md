@@ -2,12 +2,6 @@
 
 This project runs a MEGA login loop using Docker on Heroku. Optional `web.py` can be used for a web interface.
 
-## Files Overview
-- `heroku.yml`       → Defines Docker containers (`web`, `worker`)
-- `Dockerfile`       → Installs MEGA CMD CLI on Debian
-- `mega_loop.sh`     → Auto-login to MEGA every 30 mins
-- `web.py`           → Optional web interface
-
 ## Deploy with CLI
 
 1. **Install Heroku CLI**  
