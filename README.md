@@ -1,30 +1,55 @@
-# Heroku MEGA Bot Deployment  
-This project uses Docker to run a MEGA login loop on Heroku.
+# Heroku MEGA Bot Deployment
 
-## Files  
-- heroku.yml       → Docker container definition  
-- Dockerfile       → Installs MEGA CMD  
-- mega_loop.sh     → Loops MEGA login every 30 mins  
-- web.py           → Optional web server
+This project runs a MEGA login loop using Docker on Heroku. Optional `web.py` can be used for a web interface.
 
-## Deployment Steps
+## Files Overview
+- `heroku.yml`       → Defines Docker containers (`web`, `worker`)
+- `Dockerfile`       → Installs MEGA CMD CLI on Debian
+- `mega_loop.sh`     → Auto-login to MEGA every 30 mins
+- `web.py`           → Optional web interface
 
-1. Create Heroku app:
+## Deploy with CLI
+
+1. **Install Heroku CLI**  
+   Follow: https://devcenter.heroku.com/articles/heroku-cli
+
+2. **Initialize Git**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+
+3. **Login to Heroku**:
+   ```bash
+   heroku login
+   ```
+
+4. **Create Heroku App**:
+   ```bash
    heroku create your-app-name --stack=container
+   ```
 
-2. Set MEGA credentials:
+5. **Set Environment Variables**:
+   ```bash
    heroku config:set MEGA_EMAIL=your_email@example.com
    heroku config:set MEGA_PASSWORD=your_password
+   ```
 
-3. Initialize git and push:
-   git init
+6. **Link Git Remote** (if not already linked):
+   ```bash
    heroku git:remote -a your-app-name
-   git add .
-   git commit -m "Initial"
+   ```
+
+7. **Push to Heroku**:
+   ```bash
    git push heroku master
+   ```
 
-4. Scale dynos:
+8. **Scale Dynos**:
+   ```bash
    heroku ps:scale worker=1
-   heroku ps:scale web=0    # change to 1 if web.py is needed
+   heroku ps:scale web=0   # Set to 1 if using web.py
+   ```
 
-Done. Your MEGA login loop will now run continuously on Heroku.
+Done. The MEGA login loop will now run automatically on Heroku.
