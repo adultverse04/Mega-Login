@@ -22,7 +22,10 @@
    ```bash
    heroku git:remote -a your-app-name
    ```
-
+5. **Set Container**:
+   ```bash
+   heroku stack:set container
+   ```
 5. **Push to Heroku**:
    ```bash
    git push heroku main
