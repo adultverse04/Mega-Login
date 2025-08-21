@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mega-login-bot
+    plan: free
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: MEGA_EMAIL
+        sync: false
+      - key: MEGA_PASSWORD
+        sync: false
