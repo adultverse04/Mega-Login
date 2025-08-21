@@ -1,0 +1,16 @@
+{
+  "name": "mega-login",
+  "description": "Telegram Mega Login Bot",
+  "stack": "container",
+  "repository": "https://github.com/adultverse04/Mega-Login",
+  "env": {
+    "MEGA_EMAIL": {
+      "description": "Your MEGA account email",
+      "required": true
+    },
+    "MEGA_PASSWORD": {
+      "description": "Your MEGA account password",
+      "required": true
+    }
+  }
+}
